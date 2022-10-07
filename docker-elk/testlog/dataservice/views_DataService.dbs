@@ -1,0 +1,22 @@
+<data description="multiple services per each table" disableLegacyBoxcarringMode="false" enableBatchRequests="false" enableBoxcarring="false" name="views_DataService" serviceNamespace="http://ws.wso2.org/dataservice" serviceStatus="active" transports="http https">
+   <config id="default">
+      <property name="carbon_datasource_name">WSO2_CARBON_DB</property>
+   </config>
+   <operation name="insert_views_operation">
+      <call-query href="insert_views_query">
+         <with-param name="is_trigger_deletable" query-param="is_trigger_deletable"/>
+         <with-param name="is_trigger_updatable" query-param="is_trigger_updatable"/>
+         <with-param name="table_schema" query-param="table_schema"/>
+         <with-param name="check_option" query-param="check_option"/>
+         <with-param name="is_updatable" query-param="is_updatable"/>
+         <with-param name="view_definition" query-param="view_definition"/>
+         <with-param name="table_catalog" query-param="table_catalog"/>
+         <with-param name="table_name" query-param="table_name"/>
+         <with-param name="is_insertable_into" query-param="is_insertable_into"/>
+         <with-param name="is_trigger_insertable_into" query-param="is_trigger_insertable_into"/>
+      </call-query>
+   </operation>
+   <operation name="select_all_views_operation">
+      <call-query href="select_all_views_query"/>
+   </operation>
+</data>

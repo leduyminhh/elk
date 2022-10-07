@@ -1,0 +1,18 @@
+<data description="multiple services per each table" disableLegacyBoxcarringMode="false" enableBatchRequests="false" enableBoxcarring="false" name="um_user_permission_pkey_DataService" serviceNamespace="http://ws.wso2.org/dataservice" serviceStatus="active" transports="http https">
+   <config id="default">
+      <property name="carbon_datasource_name">WSO2_CARBON_DB</property>
+   </config>
+   <query id="insert_um_user_permission_pkey_query" useConfig="default">
+      <sql>INSERT INTO public.um_user_permission_pkey() VALUES()</sql>
+   </query>
+   <query id="select_all_um_user_permission_pkey_query" useConfig="default">
+      <sql>SELECT  FROM public.um_user_permission_pkey</sql>
+      <result element="um_user_permission_pkeyCollection" rowName="um_user_permission_pkey"/>
+   </query>
+   <operation name="select_all_um_user_permission_pkey_operation">
+      <call-query href="select_all_um_user_permission_pkey_query"/>
+   </operation>
+   <operation name="insert_um_user_permission_pkey_operation">
+      <call-query href="insert_um_user_permission_pkey_query"/>
+   </operation>
+</data>

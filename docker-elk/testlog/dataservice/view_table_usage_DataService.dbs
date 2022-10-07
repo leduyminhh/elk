@@ -1,0 +1,18 @@
+<data description="multiple services per each table" disableLegacyBoxcarringMode="false" enableBatchRequests="false" enableBoxcarring="false" name="view_table_usage_DataService" serviceNamespace="http://ws.wso2.org/dataservice" serviceStatus="active" transports="http https">
+   <config id="default">
+      <property name="carbon_datasource_name">WSO2_CARBON_DB</property>
+   </config>
+   <operation name="select_all_view_table_usage_operation">
+      <call-query href="select_all_view_table_usage_query"/>
+   </operation>
+   <operation name="insert_view_table_usage_operation">
+      <call-query href="insert_view_table_usage_query">
+         <with-param name="view_catalog" query-param="view_catalog"/>
+         <with-param name="table_schema" query-param="table_schema"/>
+         <with-param name="view_schema" query-param="view_schema"/>
+         <with-param name="table_catalog" query-param="table_catalog"/>
+         <with-param name="table_name" query-param="table_name"/>
+         <with-param name="view_name" query-param="view_name"/>
+      </call-query>
+   </operation>
+</data>

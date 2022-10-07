@@ -1,0 +1,20 @@
+<data description="multiple services per each table" disableLegacyBoxcarringMode="false" enableBatchRequests="false" enableBoxcarring="false" name="usage_privileges_DataService" serviceNamespace="http://ws.wso2.org/dataservice" serviceStatus="active" transports="http https">
+   <config id="default">
+      <property name="carbon_datasource_name">WSO2_CARBON_DB</property>
+   </config>
+   <operation name="insert_usage_privileges_operation">
+      <call-query href="insert_usage_privileges_query">
+         <with-param name="privilege_type" query-param="privilege_type"/>
+         <with-param name="object_type" query-param="object_type"/>
+         <with-param name="object_name" query-param="object_name"/>
+         <with-param name="grantee" query-param="grantee"/>
+         <with-param name="object_catalog" query-param="object_catalog"/>
+         <with-param name="grantor" query-param="grantor"/>
+         <with-param name="is_grantable" query-param="is_grantable"/>
+         <with-param name="object_schema" query-param="object_schema"/>
+      </call-query>
+   </operation>
+   <operation name="select_all_usage_privileges_operation">
+      <call-query href="select_all_usage_privileges_query"/>
+   </operation>
+</data>

@@ -1,0 +1,15 @@
+<data description="multiple services per each table" disableLegacyBoxcarringMode="false" enableBatchRequests="false" enableBoxcarring="false" name="user_mappings_DataService" serviceNamespace="http://ws.wso2.org/dataservice" serviceStatus="active" transports="http https">
+   <config id="default">
+      <property name="carbon_datasource_name">WSO2_CARBON_DB</property>
+   </config>
+   <operation name="insert_user_mappings_operation">
+      <call-query href="insert_user_mappings_query">
+         <with-param name="foreign_server_name" query-param="foreign_server_name"/>
+         <with-param name="authorization_identifier" query-param="authorization_identifier"/>
+         <with-param name="foreign_server_catalog" query-param="foreign_server_catalog"/>
+      </call-query>
+   </operation>
+   <operation name="select_all_user_mappings_operation">
+      <call-query href="select_all_user_mappings_query"/>
+   </operation>
+</data>

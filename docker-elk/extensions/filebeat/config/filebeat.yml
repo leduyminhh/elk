@@ -1,0 +1,83 @@
+## Filebeat configuration
+## https://github.com/elastic/beats/blob/master/deploy/docker/filebeat.docker.yml
+#
+
+filebeat.inputs:
+  # * 3 hệ thống:
+  - type: filestream
+    enabled: true
+    id: apache-filestream-id
+    paths:
+      - '${ESB_URL}'
+    parsers:
+      - multiline:
+          keys_under_root: true
+          type: pattern
+          pattern: '^\[[0-9]{4}-[0-9]{2}-[0-9]{2}'
+          negate: true
+          match: after
+    fields:
+      system: '${ESB_SYSTEM_NAME}'
+
+  - type: filestream
+    enabled: true
+    id: apache-filestream-id
+    paths:
+      - '${SSO_URL}'
+    parsers:
+      - multiline:
+          keys_under_root: true
+          type: pattern
+          pattern: '^\[[0-9]{4}-[0-9]{2}-[0-9]{2}'
+          negate: true
+          match: after
+    fields:
+      system: '${SSO_SYSTEM_NAME}'
+
+  - type: filestream
+    enabled: true
+    id: apache-filestream-id
+    paths:
+      - '${PAYMENT_URL}'
+    fields:
+      system: '${PAYMENT_SYSTEM_NAME}'
+
+  - type: filestream
+    enabled: true
+    id: apache-filestream-id
+    paths:
+      - '${DATASERVICE_TRACKING_FOLDER_NAME}*${DATASERVICE_TRACKING_FILE_EXTENSION}'
+    parsers:
+      - multiline:
+          keys_under_root: true
+          type: pattern
+          pattern: '.'
+          match: after
+    fields:
+      system: 'dataservices'
+
+
+
+
+output.logstash:
+  # hosts: ['10.86.142.170:5044']
+  hosts: '${LOGSTASH_ADDRESS}'
+  
+# output.console:
+#   pretty: true
+
+logging.level: info
+logging.to_files: true
+logging.files:
+  path: /textlog/
+  name: debugfilebeat
+  keepfiles: 7
+  permissions: 0644
+## HTTP endpoint for health checking
+## https://www.elastic.co/guide/en/beats/filebeat/current/http-endpoint.html
+#
+
+setup.template.name: "desktop"
+setup.template.pattern: "desktop-*"
+http.enabled: true
+http.host: 0.0.0.0

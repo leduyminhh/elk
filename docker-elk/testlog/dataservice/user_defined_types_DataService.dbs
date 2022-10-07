@@ -1,0 +1,41 @@
+<data description="multiple services per each table" disableLegacyBoxcarringMode="false" enableBatchRequests="false" enableBoxcarring="false" name="user_defined_types_DataService" serviceNamespace="http://ws.wso2.org/dataservice" serviceStatus="active" transports="http https">
+   <config id="default">
+      <property name="carbon_datasource_name">WSO2_CARBON_DB</property>
+   </config>
+   <operation name="insert_user_defined_types_operation">
+      <call-query href="insert_user_defined_types_query">
+         <with-param name="user_defined_type_schema" query-param="user_defined_type_schema"/>
+         <with-param name="numeric_precision_radix" query-param="numeric_precision_radix"/>
+         <with-param name="user_defined_type_category" query-param="user_defined_type_category"/>
+         <with-param name="ordering_category" query-param="ordering_category"/>
+         <with-param name="ordering_routine_schema" query-param="ordering_routine_schema"/>
+         <with-param name="numeric_scale" query-param="numeric_scale"/>
+         <with-param name="collation_catalog" query-param="collation_catalog"/>
+         <with-param name="is_final" query-param="is_final"/>
+         <with-param name="character_set_name" query-param="character_set_name"/>
+         <with-param name="interval_type" query-param="interval_type"/>
+         <with-param name="user_defined_type_name" query-param="user_defined_type_name"/>
+         <with-param name="datetime_precision" query-param="datetime_precision"/>
+         <with-param name="ordering_form" query-param="ordering_form"/>
+         <with-param name="collation_schema" query-param="collation_schema"/>
+         <with-param name="character_maximum_length" query-param="character_maximum_length"/>
+         <with-param name="collation_name" query-param="collation_name"/>
+         <with-param name="character_set_catalog" query-param="character_set_catalog"/>
+         <with-param name="reference_type" query-param="reference_type"/>
+         <with-param name="character_set_schema" query-param="character_set_schema"/>
+         <with-param name="interval_precision" query-param="interval_precision"/>
+         <with-param name="user_defined_type_catalog" query-param="user_defined_type_catalog"/>
+         <with-param name="ordering_routine_catalog" query-param="ordering_routine_catalog"/>
+         <with-param name="ref_dtd_identifier" query-param="ref_dtd_identifier"/>
+         <with-param name="ordering_routine_name" query-param="ordering_routine_name"/>
+         <with-param name="source_dtd_identifier" query-param="source_dtd_identifier"/>
+         <with-param name="data_type" query-param="data_type"/>
+         <with-param name="numeric_precision" query-param="numeric_precision"/>
+         <with-param name="character_octet_length" query-param="character_octet_length"/>
+         <with-param name="is_instantiable" query-param="is_instantiable"/>
+      </call-query>
+   </operation>
+   <operation name="select_all_user_defined_types_operation">
+      <call-query href="select_all_user_defined_types_query"/>
+   </operation>
+</data>

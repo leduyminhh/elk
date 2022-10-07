@@ -1,0 +1,75 @@
+<data description="multiple services per each table" disableLegacyBoxcarringMode="false" enableBatchRequests="false" enableBoxcarring="false" name="um_user_permission_DataService" serviceNamespace="http://ws.wso2.org/dataservice" serviceStatus="active" transports="http https">
+   <config id="default">
+      <property name="carbon_datasource_name">WSO2_CARBON_DB</property>
+   </config>
+   <query id="update_um_user_permission_query" useConfig="default">
+      <sql>UPDATE public.um_user_permission SET um_permission_id=?,um_user_name=?,um_is_allowed=?,um_tenant_id=? WHERE um_id=?</sql>
+      <param name="um_permission_id" ordinal="1" paramType="SCALAR" sqlType="INTEGER" type="IN"/>
+      <param name="um_user_name" ordinal="2" paramType="SCALAR" sqlType="STRING" type="IN"/>
+      <param name="um_is_allowed" ordinal="3" paramType="SCALAR" sqlType="SMALLINT" type="IN"/>
+      <param name="um_tenant_id" ordinal="4" paramType="SCALAR" sqlType="INTEGER" type="IN"/>
+      <param name="um_id" ordinal="5" paramType="SCALAR" sqlType="INTEGER" type="IN"/>
+   </query>
+   <query id="delete_um_user_permission_query" useConfig="default">
+      <sql>DELETE FROM public.um_user_permission WHERE um_id=?</sql>
+      <param name="um_id" ordinal="1" paramType="SCALAR" sqlType="INTEGER" type="IN"/>
+   </query>
+   <query id="select_with_key_um_user_permission_query" useConfig="default">
+      <sql>SELECT um_id, um_permission_id, um_user_name, um_is_allowed, um_tenant_id FROM public.um_user_permission WHERE um_id=?</sql>
+      <param name="um_id" ordinal="1" paramType="SCALAR" sqlType="INTEGER" type="IN"/>
+      <result element="um_user_permissionCollection" rowName="um_user_permission">
+         <element column="um_id" name="um_id" xsdType="xs:integer"/>
+         <element column="um_permission_id" name="um_permission_id" xsdType="xs:integer"/>
+         <element column="um_user_name" name="um_user_name" xsdType="xs:string"/>
+         <element column="um_is_allowed" name="um_is_allowed" xsdType="xs:integer"/>
+         <element column="um_tenant_id" name="um_tenant_id" xsdType="xs:integer"/>
+      </result>
+   </query>
+   <query id="insert_um_user_permission_query" useConfig="default">
+      <sql>INSERT INTO public.um_user_permission(um_permission_id,um_user_name,um_is_allowed,um_tenant_id) VALUES(?,?,?,?)</sql>
+      <param name="um_permission_id" ordinal="1" paramType="SCALAR" sqlType="INTEGER" type="IN"/>
+      <param name="um_user_name" ordinal="2" paramType="SCALAR" sqlType="STRING" type="IN"/>
+      <param name="um_is_allowed" ordinal="3" paramType="SCALAR" sqlType="SMALLINT" type="IN"/>
+      <param name="um_tenant_id" ordinal="4" paramType="SCALAR" sqlType="INTEGER" type="IN"/>
+   </query>
+   <query id="select_all_um_user_permission_query" useConfig="default">
+      <sql>SELECT um_id, um_permission_id, um_user_name, um_is_allowed, um_tenant_id FROM public.um_user_permission</sql>
+      <result element="um_user_permissionCollection" rowName="um_user_permission">
+         <element column="um_id" name="um_id" xsdType="xs:integer"/>
+         <element column="um_permission_id" name="um_permission_id" xsdType="xs:integer"/>
+         <element column="um_user_name" name="um_user_name" xsdType="xs:string"/>
+         <element column="um_is_allowed" name="um_is_allowed" xsdType="xs:integer"/>
+         <element column="um_tenant_id" name="um_tenant_id" xsdType="xs:integer"/>
+      </result>
+   </query>
+   <operation name="update_um_user_permission_operation">
+      <call-query href="update_um_user_permission_query">
+         <with-param name="um_id" query-param="um_id"/>
+         <with-param name="um_user_name" query-param="um_user_name"/>
+         <with-param name="um_is_allowed" query-param="um_is_allowed"/>
+         <with-param name="um_permission_id" query-param="um_permission_id"/>
+         <with-param name="um_tenant_id" query-param="um_tenant_id"/>
+      </call-query>
+   </operation>
+   <operation name="select_with_key_um_user_permission_operation">
+      <call-query href="select_with_key_um_user_permission_query">
+         <with-param name="um_id" query-param="um_id"/>
+      </call-query>
+   </operation>
+   <operation name="insert_um_user_permission_operation">
+      <call-query href="insert_um_user_permission_query">
+         <with-param name="um_user_name" query-param="um_user_name"/>
+         <with-param name="um_is_allowed" query-param="um_is_allowed"/>
+         <with-param name="um_permission_id" query-param="um_permission_id"/>
+         <with-param name="um_tenant_id" query-param="um_tenant_id"/>
+      </call-query>
+   </operation>
+   <operation name="select_all_um_user_permission_operation">
+      <call-query href="select_all_um_user_permission_query"/>
+   </operation>
+   <operation name="delete_um_user_permission_operation">
+      <call-query href="delete_um_user_permission_query">
+         <with-param name="um_id" query-param="um_id"/>
+      </call-query>
+   </operation>
+</data>
